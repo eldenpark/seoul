@@ -1,0 +1,20 @@
+{
+  "author": "Elden S. Park",
+  "dependencies": {
+    "jege": "^0.4.0",
+    "react": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.23",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/styled-components": "^4.1.18"
+  },
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "main": "lib/index.js",
+  "name": "seoul",
+  "version": "0.0.0"
+}
