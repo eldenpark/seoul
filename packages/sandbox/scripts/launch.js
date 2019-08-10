@@ -16,7 +16,7 @@ function launch() {
 
   const buildDevTask = gulp.task('build-dev');
   buildDevTask(() => {
-    require('../src/server/local.ts');
+    require('../src/server/index.local.ts');
   });
 }
 

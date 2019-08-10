@@ -26,10 +26,10 @@ const babelRc = {
     // "@babel/plugin-syntax-import-meta",
     // "@babel/plugin-proposal-json-strings",
     r('babel-plugin-dynamic-import-node'),
-    [r('babel-plugin-styled-components'), {
-      displayName: true,
-      ssr: true,
-    }],
+    // [r('babel-plugin-styled-components'), {
+    //   displayName: true,
+    //   ssr: true,
+    // }],
   ],
   presets: [
     [r('@babel/preset-env'), {

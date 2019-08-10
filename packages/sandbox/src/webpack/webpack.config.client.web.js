@@ -15,10 +15,11 @@ module.exports = {
             loader: 'babel-loader',
             options: babelRc,
           },
+          'astroturf/loader',
         ],
       },
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,

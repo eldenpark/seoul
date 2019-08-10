@@ -2,31 +2,39 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Header from '@@universal/components/Header';
-import PageDefault from '@@universal/components/PageDefault';
-import PageOne from '@@universal/components/PageOne';
+import GlobalStyle from '@@universal/GlobalStyle';
+import Leftbar from '@@universal/components/Leftbar';
+import RootPage from '@@universal/components/pages/RootPage/RootPage';
+import Textpage from '@@universal/components/pages/TextPage/TextPage';
+
+const StyledUniversal = styled.div<any>({
+  display: 'flex',
+  fontFamily: '"Roboto", sans-serif',
+});
 
 const Page = styled.div({
   display: 'flex',
   justifyContent: 'center',
+  padding: '38px 40px',
 });
 
 const Universal: React.FC<{}> = () => {
   return (
-    <div>
-      <Header />
-      <Page className="page">
+    <StyledUniversal>
+      <GlobalStyle />
+      <Leftbar />
+      <Page>
         <Switch>
           <Route
-            component={PageOne}
-            path="/pageOne"
+            component={Textpage}
+            path="/styled/Text"
           />
           <Route
-            component={PageDefault}
+            component={RootPage}
           />
         </Switch>
       </Page>
-    </div>
+    </StyledUniversal>
   );
 };
 

@@ -1,4 +1,4 @@
-export default class State {
+export default class IsomorphicState {
   assets: string[];
   buildHash: string;
   testProp1: any;

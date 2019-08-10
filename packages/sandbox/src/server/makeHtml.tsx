@@ -7,7 +7,7 @@ import { renderToString } from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
 
 import ServerApp from './ServerApp';
-import State from './State';
+import State from './IsomorphicState';
 
 const log = logger('[example-react]');
 
@@ -38,6 +38,8 @@ const makeHtml: MakeHtml<State> = async function makeHtml({
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1">
   <title>seoul</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <link rel="stylesheet" href="/assets/normalize.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
   ${styledComponentsStyleSheet.getStyleTags()}
 </head>

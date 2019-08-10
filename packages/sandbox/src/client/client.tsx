@@ -1,8 +1,10 @@
-/* eslint-disable no-console */
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { logger } from 'jege';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import ClientApp from './ClientApp';
+
+const log = logger('[sandbox]');
 
 declare global {
   interface Window {
@@ -18,16 +20,18 @@ declare global {
 (function setBabelPolyfill() {
   if ((typeof window !== 'undefined' && !window._babelPolyfill)
     || (typeof global !== 'undefined' && !global._babelPolyfill)) {
-    console.info(`[client] babel-polyfill is imported, since it wasn't imported yet`);
+    log(`setBabelPolyfill(): babel-polyfill is imported, since it wasn't imported yet`);
     require('babel-polyfill');
   }
 })();
 
-console.info('[client] Running in NODE_ENV: %s', process.env.NODE_ENV);
+(function initiateClient() {
+  log('initiateClient(): running in NODE_ENV: %s', process.env.NODE_ENV);
 
-const appRoot = document.getElementById('app-root');
+  const appRoot = document.getElementById('app-root');
 
-ReactDOM.hydrate(
-  <ClientApp />,
-  appRoot,
-);
+  ReactDOM.hydrate(
+    <ClientApp />,
+    appRoot,
+  );
+})();

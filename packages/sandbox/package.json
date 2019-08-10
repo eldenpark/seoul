@@ -1,14 +1,17 @@
 {
   "author": "Elden S. Park",
   "dependencies": {
+    "astroturf": "^0.9.9",
     "axios": "^0.19.0",
     "babel-polyfill": "^6.26.0",
-    "express-isomorphic": "^0.25.1",
-    "express-isomorphic-extension": "^0.25.2",
+    "express-isomorphic": "^0.30.1",
+    "express-isomorphic-extension": "^0.30.1",
     "jege": "^0.4.0",
     "react": "^16.8.6",
     "react-dom": "npm:@hot-loader/react-dom",
+    "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
+    "seoul": "^0.0.1",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
@@ -24,10 +27,13 @@
     "express": "^4.17.1",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
+    "ignore-styles": "^5.0.1",
     "mini-css-extract-plugin": "^0.7.0",
     "react-hot-loader": "^4.12.6",
+    "style-loader": "^0.23.1",
     "webpack": "^4.33.0",
     "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2",
     "yargs": "^13.3.0"
   },
   "description": "",

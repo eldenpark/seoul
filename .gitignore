@@ -171,4 +171,6 @@ __temp/
 
 # ...
 package-lock.json
+packages/*/build
 packages/*/lib
+packages/*/styled
