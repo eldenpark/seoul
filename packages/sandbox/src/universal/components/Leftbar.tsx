@@ -30,6 +30,20 @@ const Leftbar: React.FC<{}> = () => {
     history.push(href);
   }, []);
 
+  const Li = React.useMemo(() => {
+    const LiComponent: React.FC<LiComponentProps> = ({
+      label,
+    }) => (
+      <li
+        data-href={`/styled/${label.toLowerCase()}`}
+        onClick={handleClickButton}
+      >
+        {label}
+      </li>
+    );
+    return LiComponent;
+  }, []);
+
   return (
     <StyledLeftbar>
       <FixedMenubar>
@@ -40,14 +54,15 @@ const Leftbar: React.FC<{}> = () => {
           Seoul.js
         </Logo>
         <div>
-          <p>span</p>
+          <p>styled</p>
           <ul>
-            <li
-              data-href="/styled/text"
-              onClick={handleClickButton}
-            >
-              Text
-            </li>
+            <Li label="Text" />
+            <Li label="Button" />
+            <Li label="Badged" />
+            <Li label="Grid" />
+            <Li label="Image" />
+            <Li label="Table" />
+            <Li label="Spinner" />
           </ul>
         </div>
       </FixedMenubar>
@@ -56,3 +71,7 @@ const Leftbar: React.FC<{}> = () => {
 };
 
 export default Leftbar;
+
+interface LiComponentProps {
+  label: string;
+}

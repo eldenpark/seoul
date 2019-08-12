@@ -4,7 +4,6 @@ const babelRc = require('../../scripts/.babelRc');
 
 module.exports = {
   context: __dirname,
-  externals: {},
   module: {
     rules: [
       {
