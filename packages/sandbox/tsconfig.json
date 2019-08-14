@@ -8,8 +8,7 @@
     "jsx": "react",
     "lib": [
       "dom",
-      "es6",
-      "es7"
+      "es2019",
     ],
     "module": "commonjs",
     "moduleResolution": "node",

@@ -2,6 +2,7 @@ import { logger } from 'jege';
 import React from 'react';
 import styled from 'styled-components';
 
+import componentDefinitions from '@@universal/componentDefinitions';
 import useRouter from '@@universal/hooks/useRouter';
 
 const log = logger('[sandbox]');
@@ -42,7 +43,27 @@ const Leftbar: React.FC<{}> = () => {
       </li>
     );
     return LiComponent;
-  }, []);
+  }, ['hot']);
+
+  const menus = React.useMemo(() => {
+    return componentDefinitions.map(({ components, label }) => {
+      const lists = components.map(({ name }) => {
+        return (
+          <Li
+            key={name}
+            label={name.charAt(0).toUpperCase() + name.slice(1)}
+          />
+        );
+      });
+
+      return (
+        <div key={label}>
+          <p>{label}</p>
+          <ul>{lists}</ul>
+        </div>
+      );
+    });
+  }, [componentDefinitions]);
 
   return (
     <StyledLeftbar>
@@ -54,16 +75,7 @@ const Leftbar: React.FC<{}> = () => {
           Seoul.js
         </Logo>
         <div>
-          <p>styled</p>
-          <ul>
-            <Li label="Text" />
-            <Li label="Button" />
-            <Li label="Badged" />
-            <Li label="Grid" />
-            <Li label="Image" />
-            <Li label="Table" />
-            <Li label="Spinner" />
-          </ul>
+          {menus}
         </div>
       </FixedMenubar>
     </StyledLeftbar>

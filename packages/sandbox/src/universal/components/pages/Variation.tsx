@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledVariation = styled.div({
-  marginBottom: 20,
+  marginBottom: 36,
 });
 
 const VariationTitle = styled.p({
   fontSize: '1.7rem',
-  lineHeight: 1.8,
+  marginBottom: 18,
 });
 
 const Variation = ({

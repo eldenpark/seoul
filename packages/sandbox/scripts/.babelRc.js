@@ -33,9 +33,11 @@ const babelRc = {
   ],
   presets: [
     [r('@babel/preset-env'), {
+      corejs: 3,
       targets: {
         node: '8.11',
       },
+      useBuiltIns: 'entry',
     }],
     r('@babel/preset-react'),
     r('@babel/preset-typescript'),

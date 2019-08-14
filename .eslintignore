@@ -1,7 +1,7 @@
 !/.*
 !**/.*
 **/node_modules
-packages/**/build
-packages/**/dist
-packages/**/lib
-packages/**/styled
+packages/*/build
+packages/*/dist
+packages/*/lib
+packages/*/styled

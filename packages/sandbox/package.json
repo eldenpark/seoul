@@ -4,6 +4,7 @@
     "astroturf": "^0.9.9",
     "axios": "^0.19.0",
     "babel-polyfill": "^6.26.0",
+    "core-js": "^3.2.1",
     "express-isomorphic": "^0.30.1",
     "express-isomorphic-extension": "^0.30.1",
     "jege": "^0.4.0",

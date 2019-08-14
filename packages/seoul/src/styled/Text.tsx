@@ -1,61 +1,97 @@
 import React from 'react';
-import styled, {
-  CSSProperties,
-} from 'styled-components';
+import styled from 'styled-components';
 
-const TextStyle: TextStyle = {
-  h3: {
-    fontSize: '1.6rem',
-    fontWeight: 500,
-    letterSpacing: '0.02938em',
-    lineHeight: 1.5,
-  },
-  h4: {
-    fontSize: '1.3rem',
-    fontWeight: 500,
-    letterSpacing: '0.00938em',
-    lineHeight: 1.5,
-  },
-  h5: {
-    fontSize: '1.0rem',
-    fontWeight: 500,
-    letterSpacing: '0.00438em',
-  },
-  t3: {
-    fontSize: '1.3rem',
-  },
-  t4: {
-    fontSize: '1.15rem',
-    letterSpacing: '0.00938em',
-    lineHeight: 1.5,
-  },
-  t5: {
-    fontSize: '1rem',
-  },
+const h3 = styled.h2({
+  fontSize: '3.8rem',
+  fontWeight: 300,
+  letterSpacing: '-0.00833em',
+  lineHeight: 1,
+});
+
+const h4 = styled.p({
+  fontSize: '3rem',
+  fontWeight: 400,
+  letterSpacing: 0,
+  lineHeight: 1.04,
+});
+
+const h5 = styled.p({
+  fontSize: '2.025rem',
+  fontWeight: 300,
+  letterSpacing: 0.00625,
+  lineHeight: 1.17,
+});
+
+const h6 = styled.p({
+  fontSize: '1.6rem',
+  fontWeight: 400,
+  letterSpacing: '0.02938em',
+});
+
+const h7 = styled.p({
+  fontSize: '1.3rem',
+  fontWeight: 500,
+  letterSpacing: '0.00938em',
+});
+
+const h8 = styled.p({
+  fontSize: '1.0rem',
+  fontWeight: 400,
+  letterSpacing: '0.00438em',
+});
+
+const t6 = styled.span({
+  fontSize: '1.3rem',
+  lineHeight: 1.5,
+});
+
+const t7 = styled.span({
+  fontSize: '1.15rem',
+  fontWeight: 400,
+  letterSpacing: '0.00938em',
+  lineHeight: 1.3,
+});
+
+const t8 = styled.span({
+  fontSize: '1rem',
+  fontWeight: 400,
+  letterSpacing: '0.01020em',
+  lineHeight: 1.3,
+});
+
+const t9 = styled.span({
+  fontSize: '0.87rem',
+  fontWeight: 400,
+  letterSpacing: '0.01103em',
+  lineHeight: 1.3,
+});
+
+const componentMapping: ComponentMapping = {
+  h3,
+  h4,
+  h5,
+  h6,
+  h7,
+  h8,
+  t6,
+  t7,
+  t8,
+  t9,
 };
-
-const styledFunction = (props) => {
-  const textStyle = TextStyle[props.textType];
-  return {
-    ...textStyle,
-  };
-};
-
-const Span = styled.span(styledFunction);
-
-const P = styled.p(styledFunction);
 
 const Text: React.FC<TextProps> = ({
   children,
   className,
-  p = false,
-  textType = 't5',
+  textType = 't8',
 }) => {
-  const Component: any = p ? P : Span;
+  const Component = componentMapping[textType];
+  if (Component === undefined) {
+    throw new Error('textType is not valid for <Text />');
+  }
+
   return (
     <Component
       className={className}
-      textType={textType}
     >
       {children}
     </Component>
@@ -66,17 +102,21 @@ export default Text;
 
 interface TextProps {
   className?: string;
-  p?: boolean;
   textType?: TextType;
 }
 
-type TextStyle = {
-  [type in TextType]: CSSProperties;
+type ComponentMapping = {
+  [key in TextType]: React.FC<any>;
 };
 
-type TextType = 'h3'
+type TextType =
+'h3'
 | 'h4'
 | 'h5'
-| 't3'
-| 't4'
-| 't5';
+| 'h6'
+| 'h7'
+| 'h8'
+| 't6'
+| 't7'
+| 't8'
+| 't9';

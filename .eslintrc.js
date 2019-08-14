@@ -1,33 +1,32 @@
 module.exports = {
-  env: {
-    browser: true,
-    node: true,
-  },
   extends: [
     'airbnb',
     'airbnb-typescript',
   ],
-  overrides: {
-    files: ['**/*.ts'],
-    parser: '@typescript-eslint/parser',
-    rules: {
-      'no-undef': 'off',
-    },
-  },
   parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 2018,
-  },
+  parserOptions: { ecmaVersion: 2018 },
   plugins: [
     '@typescript-eslint',
     'sort-destructure-keys',
     'typescript-sort-keys',
+    'eslint-plugin-react',
+    'sort-class-members',
   ],
   root: true,
   rules: {
+    '@typescript-eslint/camelcase': ['off'],
+    '@typescript-eslint/member-ordering': ['error', {
+      classes: [
+        'static-field',
+        'instance-field',
+        'constructor',
+        'static-method',
+        'instance-method',
+      ],
+    }],
     'arrow-body-style': ['off'],
     'arrow-parens': ['error', 'always'],
-    'dot-notation': ['error', { allowPattern: '^[^_]*([_]{2}).+' }],
+    'dot-notation': ['off'],
     'global-require': ['off'],
     'import/no-dynamic-require': ['off'],
     'import/no-extraneous-dependencies': ['error', {
@@ -38,10 +37,13 @@ module.exports = {
     'import/prefer-default-export': ['off'],
     'jsx-a11y/click-events-have-key-events': ['off'],
     'jsx-a11y/no-noninteractive-element-interactions': ['off'],
-    'jsx-a11y/no-static-element-interactions': ['off'],
     'lines-between-class-members': ['off'],
     'no-await-in-loop': ['off'],
+    'no-param-reassign': ['off', { props: false }],
     'no-underscore-dangle': ['off'],
+    'no-unneeded-ternary': ['error', {
+      defaultAssignment: true,
+    }],
     'no-use-before-define': ['error', {
       functions: false,
     }],
@@ -53,10 +55,19 @@ module.exports = {
       {
         allowTemplateLiterals: true,
       }],
+    'react/destructuring-assignment': ['off'],
+    'react/jsx-max-props-per-line': ['error', {
+      maximum: 2,
+    }],
+    'react/jsx-sort-props': ['error', {
+      reservedFirst: false,
+    }],
     'react/prop-types': ['off'],
     'sort-destructure-keys/sort-destructure-keys': 2,
     'sort-keys': ['error'],
-    'typescript-sort-keys/interface': 2,
+    'typescript-sort-keys/interface': ['error', 'asc', {
+      caseSensitive: false,
+    }],
     'typescript-sort-keys/string-enum': 2,
     'wrap-iife': ['error', 'inside'],
   },
