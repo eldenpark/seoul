@@ -49,14 +49,14 @@ const t7 = styled.span({
   fontSize: '1.15rem',
   fontWeight: 400,
   letterSpacing: '0.00938em',
-  lineHeight: 1.3,
+  lineHeight: 1.5,
 });
 
 const t8 = styled.span({
   fontSize: '1rem',
   fontWeight: 400,
   letterSpacing: '0.01020em',
-  lineHeight: 1.3,
+  lineHeight: 1.4,
 });
 
 const t9 = styled.span({
