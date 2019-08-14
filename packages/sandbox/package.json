@@ -12,7 +12,7 @@
     "react-dom": "npm:@hot-loader/react-dom",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "seoul": "^0.1.1",
+    "seoul": "^0.2.0",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
@@ -42,5 +42,5 @@
   "license": "ISC",
   "name": "sandbox",
   "private": true,
-  "version": "0.1.1"
+  "version": "0.2.0"
 }
