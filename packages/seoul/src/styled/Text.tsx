@@ -86,7 +86,7 @@ const Text: React.FC<TextProps> = ({
 }) => {
   const Component = componentMapping[textType];
   if (Component === undefined) {
-    throw new Error('textType is not valid for <Text />');
+    throw new Error(`textType (${textType}) is not valid for <Text />`);
   }
 
   return (
