@@ -8,6 +8,7 @@ const Image = styled.div<ImgaeProps>(({
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'contain',
+  flexShrink: 0,
   height: size || 80,
   width: size || 80,
 }));
