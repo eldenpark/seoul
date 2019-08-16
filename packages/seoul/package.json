@@ -16,5 +16,5 @@
   "license": "ISC",
   "main": "lib/index.js",
   "name": "seoul",
-  "version": "0.2.4"
+  "version": "0.2.5"
 }
