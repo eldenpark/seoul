@@ -70,12 +70,20 @@ const InputBody = styled.input({
 const Input: React.FC<InputProps> = ({
   id,
   label,
+  type = 'text',
+  ...rest
 }) => {
   const [focusClassName, setFocusClassName] = React.useState('');
-  const handleBlurInput = React.useCallback(() => {
+  const handleBlurInput = React.useCallback((e) => {
+    if (rest.onBlur !== undefined) {
+      rest.onBlur(e);
+    }
     setFocusClassName('');
   }, []);
-  const handleFocusInput = React.useCallback(() => {
+  const handleFocusInput = React.useCallback((e) => {
+    if (rest.onFocus !== undefined) {
+      rest.onFocus(e);
+    }
     setFocusClassName('focus');
   }, []);
 
@@ -87,7 +95,7 @@ const Input: React.FC<InputProps> = ({
           id={id}
           onBlur={handleBlurInput}
           onFocus={handleFocusInput}
-          type="text"
+          type={type}
         />
       </Padding>
     </StyledInput>
@@ -99,4 +107,8 @@ export default Input;
 interface InputProps {
   id: string;
   label: string;
+  onBlur?;
+  onFocus?;
+  type?: string;
+  [prop: string]: any;
 }

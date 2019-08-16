@@ -12,17 +12,33 @@ const Row = styled.div({
 });
 
 const InputPage: React.FC<{}> = () => {
+  const [msg, setMsg] = React.useState('');
+  const handleFocusEmail = React.useCallback(() => {
+    setMsg('focus email');
+  }, []);
+
+  const handleBlurEmail = React.useCallback(() => {
+    setMsg('');
+  }, []);
+
   return (
     <PageBase pageTitle="Input">
       <Variation typeLabel="default">
         <Row>
+          <div>
+            <span>msg: </span>
+            <span>{msg}</span>
+          </div>
           <Input
             id="input-default"
-            label="input1"
+            label="email"
+            onBlur={handleBlurEmail}
+            onFocus={handleFocusEmail}
           />
           <Input
             id="input-default2"
-            label="input2"
+            label="password"
+            type="password"
           />
         </Row>
       </Variation>
