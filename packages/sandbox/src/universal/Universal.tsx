@@ -4,6 +4,7 @@ import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import styled from 'styled-components';
 
+import componentDefinitions from './componentDefinitions';
 import Page from '@@universal/components/pages/Page';
 import GlobalStyle from '@@universal/GlobalStyle';
 import Leftbar from '@@universal/components/Leftbar';
@@ -17,8 +18,8 @@ const Universal: React.FC<{}> = () => {
   return (
     <StyledUniversal>
       <GlobalStyle />
-      <Leftbar />
-      <Page />
+      <Leftbar componentDefinitions={componentDefinitions} />
+      <Page componentDefinitions={componentDefinitions} />
     </StyledUniversal>
   );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 
-import componentDefinitions from '@@universal/componentDefinitions';
+import { ComponentDefinition } from '@@universal/componentDefinitions';
 import RootPage from '@@universal/components/pages/componentPages/RootPage';
 
 const StyledPage = styled.div({
@@ -11,7 +11,9 @@ const StyledPage = styled.div({
   padding: '38px 40px',
 });
 
-const Page: React.FC<{}> = () => {
+const Page: React.FC<PageProps> = ({
+  componentDefinitions,
+}) => {
   const routes = React.useMemo(() => {
     const routeComponents = componentDefinitions.flatMap(({ components, label }) => {
       return components.map((component) => {
@@ -45,3 +47,7 @@ const Page: React.FC<{}> = () => {
 };
 
 export default Page;
+
+interface PageProps {
+  componentDefinitions: ComponentDefinition[];
+}

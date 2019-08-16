@@ -2,7 +2,7 @@ import { logger } from 'jege';
 import React from 'react';
 import styled from 'styled-components';
 
-import componentDefinitions from '@@universal/componentDefinitions';
+import { ComponentDefinition } from '@@universal/componentDefinitions';
 import useRouter from '@@universal/hooks/useRouter';
 
 const log = logger('[sandbox]');
@@ -22,7 +22,9 @@ const FixedMenubar = styled.div({
   width: 230,
 });
 
-const Leftbar: React.FC<{}> = () => {
+const Leftbar: React.FC<LeftbarProps> = ({
+  componentDefinitions,
+}) => {
   const { history } = useRouter();
 
   const handleClickButton = React.useCallback((e) => {
@@ -83,6 +85,10 @@ const Leftbar: React.FC<{}> = () => {
 };
 
 export default Leftbar;
+
+interface LeftbarProps {
+  componentDefinitions: ComponentDefinition[];
+}
 
 interface LiComponentProps {
   label: string;
