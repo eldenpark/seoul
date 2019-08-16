@@ -120,9 +120,9 @@ interface InputProps {
   fullWidth?: boolean;
   id?: string;
   label: string;
-  placeholder?: string;
   onBlur?;
   onFocus?;
+  placeholder?: string;
   type?: string;
   [prop: string]: any;
 }
