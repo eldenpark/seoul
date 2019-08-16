@@ -36,7 +36,6 @@ const InputPage: React.FC<{}> = () => {
             onFocus={handleFocusEmail}
           />
           <Input
-            id="input-default2"
             label="password"
             type="password"
           />

@@ -71,31 +71,38 @@ const Input: React.FC<InputProps> = ({
   id,
   label,
   type = 'text',
-  ...rest
+  ...props
 }) => {
+  const { onBlur, onFocus, ...rest } = props;
   const [focusClassName, setFocusClassName] = React.useState('');
   const handleBlurInput = React.useCallback((e) => {
-    if (rest.onBlur !== undefined) {
-      rest.onBlur(e);
+    if (onBlur !== undefined) {
+      onBlur(e);
     }
     setFocusClassName('');
   }, []);
   const handleFocusInput = React.useCallback((e) => {
-    if (rest.onFocus !== undefined) {
-      rest.onFocus(e);
+    if (onFocus !== undefined) {
+      onFocus(e);
     }
     setFocusClassName('focus');
   }, []);
 
   return (
     <StyledInput className={focusClassName}>
-      <Label htmlFor={id}>{label}</Label>
+      <Label
+        {...(id && { htmlFor: id })}
+        htmlFor={id}
+      >
+        {label}
+      </Label>
       <Padding>
         <InputBody
-          id={id}
           onBlur={handleBlurInput}
           onFocus={handleFocusInput}
           type={type}
+          {...(id && { id })}
+          {...rest}
         />
       </Padding>
     </StyledInput>
@@ -105,7 +112,7 @@ const Input: React.FC<InputProps> = ({
 export default Input;
 
 interface InputProps {
-  id: string;
+  id?: string;
   label: string;
   onBlur?;
   onFocus?;
