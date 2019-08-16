@@ -41,6 +41,19 @@ const InputPage: React.FC<{}> = () => {
           />
         </Row>
       </Variation>
+      <Variation typeLabel="fullWidth">
+        <div>
+          <Input
+            fullWidth
+            label="full1"
+          />
+          <Input
+            fullWidth
+            label="full2"
+            type="password"
+          />
+        </div>
+      </Variation>
     </PageBase>
   );
 };

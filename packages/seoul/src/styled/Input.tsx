@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledInput = styled.div({
+const StyledInput = styled.div<any>((props) => ({
   '&.focus>div:after': {
     transform: 'scaleX(1)',
   },
@@ -16,7 +16,8 @@ const StyledInput = styled.div({
   },
   display: 'inline-block',
   position: 'relative',
-});
+  width: props.fullWidth ? '100%' : 'auto',
+}));
 
 const Label = styled.label({
   left: 0,
@@ -68,6 +69,7 @@ const InputBody = styled.input({
 });
 
 const Input: React.FC<InputProps> = ({
+  fullWidth,
   id,
   label,
   type = 'text',
@@ -89,7 +91,10 @@ const Input: React.FC<InputProps> = ({
   }, []);
 
   return (
-    <StyledInput className={focusClassName}>
+    <StyledInput
+      className={focusClassName}
+      fullWidth={fullWidth}
+    >
       <Label
         {...(id && { htmlFor: id })}
         htmlFor={id}
@@ -112,6 +117,7 @@ const Input: React.FC<InputProps> = ({
 export default Input;
 
 interface InputProps {
+  fullWidth?: boolean;
   id?: string;
   label: string;
   onBlur?;
