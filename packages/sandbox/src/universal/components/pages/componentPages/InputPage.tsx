@@ -54,6 +54,21 @@ const InputPage: React.FC<{}> = () => {
           />
         </div>
       </Variation>
+      <Variation typeLabel="placeholder">
+        <div>
+          <Input
+            fullWidth
+            label="full1"
+            placeholder="placeholder 1"
+          />
+          <Input
+            fullWidth
+            label="full2"
+            placeholder="placeholder 2"
+            type="password"
+          />
+        </div>
+      </Variation>
     </PageBase>
   );
 };

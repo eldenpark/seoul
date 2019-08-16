@@ -120,6 +120,7 @@ interface InputProps {
   fullWidth?: boolean;
   id?: string;
   label: string;
+  placeholder?: string;
   onBlur?;
   onFocus?;
   type?: string;
