@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { ComponentDefinition } from '@@universal/componentDefinitions';
+import { ComponentDefinition } from '@@universal/components/componentDefinitions';
 import RootPage from '@@universal/components/pages/componentPages/RootPage';
 
 const StyledPage = styled.div({

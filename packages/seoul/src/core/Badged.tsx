@@ -68,7 +68,7 @@ const Badged: React.FC<BadgedProps> = ({
 
 export default Badged;
 
-interface BadgedProps {
+export interface BadgedProps {
   badgeStyle?: Object;
   label: string | number | undefined;
 }

@@ -2,7 +2,7 @@ import { logger } from 'jege';
 import React from 'react';
 import styled from 'styled-components';
 
-import { ComponentDefinition } from '@@universal/componentDefinitions';
+import { ComponentDefinition } from '@@universal/components/componentDefinitions';
 import useRouter from '@@universal/hooks/useRouter';
 
 const log = logger('[sandbox]');

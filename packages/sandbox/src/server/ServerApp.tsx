@@ -1,7 +1,7 @@
 import { StaticRouter } from 'react-router-dom';
 import React from 'react';
 
-import Universal from '../universal/Universal';
+import Universal from '../universal/components/Universal';
 
 const ServerApp: React.FC<ServerAppProps> = ({
   requestUrl,
