@@ -1,31 +1,29 @@
 import React from 'react';
-import styled from 'styled-components';
 
-const StyledCommonTable = styled.div({
-  overflowX: 'scroll',
-  width: '100%',
-});
+const StyledCommonTable = styled.div`
+  overflow-x: scroll;
+  width: 100%;
+`;
 
-const Table = styled.table({
-  '&>thead': {
-    color: '#0000008a',
-    fontSize: '0.75rem',
-    fontWeight: 500,
-    lineHeight: '1.3125rem',
-  },
-  borderSpacing: 0,
-  color: '#000000de',
-  fontSize: '0.875rem',
-  letterSpacing: '0.01071em',
-  lineHeight: 1.43,
-  width: '100%',
-});
+const Table = styled.table`
+  &>thead {
+    color: #0000008a;
+    fontSize: 0.75rem;
+    fontWeight: 500;
+    lineHeight: 1.3125rem;
+  }
+  border-spacing: 0;
+  color: #000000de;
+  fontSize: 0.875rem;
+  letterSpacing: 0.01071em;
+  lineHeight: 1.43;
+  width: 100%;
+`;
 
-const TableCell = styled.td<any>((props) => ({
-  borderBottom: '1px solid #e0e0e0',
-  padding: '14px 16px',
-  ...props.textCellProps,
-}));
+const TableCell = styled.td<any>`
+  border-bottom: 1px solid #e0e0e0;
+  padding: 14px 16px;
+`;
 
 const Rows: React.FC<RowsProps> = ({
   componentType = 'tbody',

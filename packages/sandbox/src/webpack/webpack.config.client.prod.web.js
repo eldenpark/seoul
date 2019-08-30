@@ -1,8 +1,11 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const merge = require('webpack-merge');
 const path = require('path');
 
 const paths = require('./paths');
 const webpackConfigClientWeb = require('./webpack.config.client.web');
+
+const r = require.resolve;
 
 const config = {
   entry: {
@@ -10,6 +13,21 @@ const config = {
     react: ['react', 'react-dom'],
   },
   mode: 'production',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: r('css-loader'),
+          },
+        ],
+      },
+    ],
+  },
   optimization: {
     minimize: true,
     runtimeChunk: false,
@@ -20,7 +38,7 @@ const config = {
   output: {
     chunkFilename: 'chunk.[chunkhash].js',
     filename: '[name].[chunkhash].js',
-    path: paths.distPublicBundle,
+    path: paths.dist,
     publicPath: '/bundle/',
   },
 };

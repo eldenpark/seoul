@@ -1,4 +1,7 @@
-import Badged from 'seoul/styled/Badged';
+import 'seoul/linaria/Badged.css';
+
+import LnBadged from 'seoul/linaria/Badged';
+// import ScBadged from 'seoul/styled/Badged';
 import React from 'react';
 
 import PageBase from '@@universal/components/pages/PageBase';
@@ -8,11 +11,11 @@ const BadgedPage: React.FC<{}> = () => {
   return (
     <PageBase pageTitle="Badged">
       <Variation typeLabel="default">
-        <Badged label="3">
+        <LnBadged label="3">
           <div>
             power
           </div>
-        </Badged>
+        </LnBadged>
       </Variation>
     </PageBase>
   );

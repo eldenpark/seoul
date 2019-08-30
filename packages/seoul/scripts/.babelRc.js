@@ -5,7 +5,7 @@ const babelRc = {
     [
       r('babel-plugin-module-resolver'), {
         alias: {
-          '@@universal': './src/universal',
+          '@@src': './src',
         },
       },
     ],
@@ -39,6 +39,7 @@ const babelRc = {
     }],
     r('@babel/preset-react'),
     r('@babel/preset-typescript'),
+    r('linaria/babel'),
   ],
 };
 

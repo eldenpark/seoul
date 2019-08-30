@@ -2,6 +2,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const babelRc = require('../../scripts/.babelRc');
 
+const r = require.resolve;
+
 module.exports = {
   context: __dirname,
   module: {
@@ -11,10 +13,16 @@ module.exports = {
         test: /\.[jt]sx?$/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: r('babel-loader'),
             options: babelRc,
           },
-          'astroturf/loader',
+          // {
+          //   loader: r('linaria/loader'),
+          //   options: {
+          //     babelOptions: babelRc,
+          //     sourceMap: true,
+          //   },
+          // },
         ],
       },
       {
@@ -32,7 +40,7 @@ module.exports = {
         test: /\.(woff(2)?|ttf|eot|svg|png|jpg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: r('url-loader'),
             options: {
               limit: 8000,
             },

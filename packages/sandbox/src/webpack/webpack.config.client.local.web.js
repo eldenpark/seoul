@@ -5,6 +5,8 @@ const webpack = require('webpack');
 const paths = require('./paths');
 const webpackConfigClientWeb = require('./webpack.config.client.web');
 
+const r = require.resolve;
+
 const config = {
   devtool: 'source-map',
   entry: {
@@ -16,6 +18,21 @@ const config = {
     react: ['react', 'react-dom'],
   },
   mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: r('style-loader'),
+          },
+          {
+            loader: r('css-loader'),
+          },
+        ],
+      },
+    ],
+  },
   optimization: {
     minimize: false,
   },

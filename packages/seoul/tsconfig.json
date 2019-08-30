@@ -13,6 +13,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "paths": {
+      "@@src/*": [
+        "./src/*"
+      ]
     },
     "skipLibCheck": true,
     "strictNullChecks": true,

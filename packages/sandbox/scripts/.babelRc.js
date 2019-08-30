@@ -41,6 +41,7 @@ const babelRc = {
     }],
     r('@babel/preset-react'),
     r('@babel/preset-typescript'),
+    // r('linaria/babel'),
   ],
 };
 

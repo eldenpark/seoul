@@ -1,9 +1,12 @@
 const merge = require('webpack-merge');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 
 const paths = require('./paths');
 const webpackConfigClientWeb = require('./webpack.config.client.web');
+
+const r = require.resolve;
 
 const config = {
   devtool: 'source-map',
@@ -12,6 +15,21 @@ const config = {
     nodeExternals(),
   ],
   mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: r('css-loader'),
+          },
+        ],
+      },
+    ],
+  },
   node: {
     __dirname: false,
     __filename: false,
