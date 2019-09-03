@@ -40,6 +40,9 @@ module.exports = {
     'lines-between-class-members': ['off'],
     'no-await-in-loop': ['off'],
     'no-param-reassign': ['off', { props: false }],
+    'no-redeclare': ['error', {
+      builtinGlobals: false,
+    }],
     'no-underscore-dangle': ['off'],
     'no-unneeded-ternary': ['error', {
       defaultAssignment: true,
@@ -58,6 +61,9 @@ module.exports = {
     'react/destructuring-assignment': ['off'],
     'react/jsx-max-props-per-line': ['error', {
       maximum: 2,
+    }],
+    'react/jsx-props-no-spreading': ['error', {
+      custom: 'ignore',
     }],
     'react/jsx-sort-props': ['error', {
       reservedFirst: false,
