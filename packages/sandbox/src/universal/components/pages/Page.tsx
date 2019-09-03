@@ -8,7 +8,6 @@ import RootPage from '@@universal/components/pages/componentPages/RootPage';
 const StyledPage = styled.div({
   display: 'flex',
   flexGrow: 1,
-  padding: '38px 40px',
 });
 
 const Page: React.FC<PageProps> = ({

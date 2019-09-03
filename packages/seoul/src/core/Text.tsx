@@ -99,7 +99,7 @@ const Text: React.FC<TextProps> = ({
 
 export default Text;
 
-interface TextProps {
+export interface TextProps {
   className?: string;
   textType?: TextType;
 }

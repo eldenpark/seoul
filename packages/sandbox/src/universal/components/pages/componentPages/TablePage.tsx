@@ -1,8 +1,13 @@
-import React from 'react';
-import Table from 'seoul/styled/Table';
+import 'seoul/linaria/Table.css';
 
+import LnTable, { TableProps } from 'seoul/linaria/Table';
+import React from 'react';
+import ScTable from 'seoul/styled/Table';
+
+import { ComponentType } from '@@universal/constants';
 import PageBase from '@@universal/components/pages/PageBase';
 import Variation from '@@universal/components/pages/Variation';
+import useComponentType from '@@universal/hooks/useComponentType';
 
 const headerRows = [
   {
@@ -41,10 +46,15 @@ const bodyRows = [
 ];
 
 const TablePage: React.FC<{}> = () => {
+  const { Component } = useComponentType<TableProps>({
+    [ComponentType.LINARIA]: LnTable,
+    [ComponentType.STYLED]: ScTable,
+  });
+
   return (
     <PageBase pageTitle="Table">
       <Variation typeLabel="default">
-        <Table
+        <Component
           bodyRows={bodyRows}
           headerRows={headerRows}
         />

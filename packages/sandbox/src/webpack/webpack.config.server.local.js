@@ -44,6 +44,7 @@ const config = {
     publicPath: '/public/',
   },
   plugins: [
+    new MiniCssExtractPlugin(),
   ],
   target: 'node',
 };

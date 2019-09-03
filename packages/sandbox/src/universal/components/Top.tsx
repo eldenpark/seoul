@@ -5,6 +5,7 @@ import { ComponentType } from '@@universal/constants';
 import useComponentType from '@@universal/hooks/useComponentType';
 
 const StyledTop = styled.div<any>({
+  padding: '15px 40px',
 });
 
 const StyledButton = styled.button<any>((props) => ({

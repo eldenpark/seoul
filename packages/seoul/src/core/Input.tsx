@@ -5,13 +5,13 @@ const StyledInput = styled.div<any>`
     transform: scaleX(1);
   }
   &.focus>div:before: {
-    borderBottom: '2px solid #000000de',
+    border-bottom: '2px solid #000000de',
   }
   &.focus>label: {
     color: '#80491f',
   }
   &:not(.focus)>div:hover:before: {
-    borderBottom: '2px solid #000000de',
+    border-bottom: '2px solid #000000de',
   }
   display: inline-block;
   position: relative;
@@ -23,7 +23,7 @@ const Label = styled.label`
   position: absolute;
   top: 0;
   transform: scale(0.75);
-  transformOrigin: top left;
+  transform-origin: top left;
   transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
 `;
 
@@ -39,7 +39,7 @@ const Padding = styled.div`
     transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
   }
   &:before {
-    borderBottom: 1px solid #0000006b;
+    border-bottom: 1px solid #0000006b;
     bottom: 0;
     content: '';
     left: 0;
@@ -47,7 +47,7 @@ const Padding = styled.div`
     right: 0;
     transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
-  marginTop: 16;
+  margin-top: 14px;
   position: relative;
 `;
 
@@ -115,7 +115,7 @@ const Input: React.FC<InputProps> = ({
 
 export default Input;
 
-interface InputProps {
+export interface InputProps {
   fullWidth?: boolean;
   id?: string;
   label: string;

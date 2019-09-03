@@ -1,9 +1,14 @@
-import Input from 'seoul/styled/Input';
+import 'seoul/linaria/Input.css';
+
+import LnInput, { InputProps } from 'seoul/linaria/Input';
 import React from 'react';
+import ScInput from 'seoul/styled/Input';
 import styled from 'styled-components';
 
+import { ComponentType } from '@@universal/constants';
 import PageBase from '@@universal/components/pages/PageBase';
 import Variation from '@@universal/components/pages/Variation';
+import useComponentType from '@@universal/hooks/useComponentType';
 
 const Row = styled.div({
   '>div': {
@@ -12,6 +17,11 @@ const Row = styled.div({
 });
 
 const InputPage: React.FC<{}> = () => {
+  const { Component } = useComponentType<InputProps>({
+    [ComponentType.LINARIA]: LnInput,
+    [ComponentType.STYLED]: ScInput,
+  });
+
   const [msg, setMsg] = React.useState('');
   const handleFocusEmail = React.useCallback(() => {
     setMsg('focus email');
@@ -29,13 +39,13 @@ const InputPage: React.FC<{}> = () => {
             <span>msg: </span>
             <span>{msg}</span>
           </div>
-          <Input
+          <Component
             id="input-default"
             label="email"
             onBlur={handleBlurEmail}
             onFocus={handleFocusEmail}
           />
-          <Input
+          <Component
             label="password"
             type="password"
           />
@@ -43,11 +53,11 @@ const InputPage: React.FC<{}> = () => {
       </Variation>
       <Variation typeLabel="fullWidth">
         <div>
-          <Input
+          <Component
             fullWidth
             label="full1"
           />
-          <Input
+          <Component
             fullWidth
             label="full2"
             type="password"
@@ -56,12 +66,12 @@ const InputPage: React.FC<{}> = () => {
       </Variation>
       <Variation typeLabel="placeholder">
         <div>
-          <Input
+          <Component
             fullWidth
             label="full1"
             placeholder="placeholder 1"
           />
-          <Input
+          <Component
             fullWidth
             label="full2"
             placeholder="placeholder 2"

@@ -1,4 +1,5 @@
 const merge = require('webpack-merge');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -24,7 +25,18 @@ const config = {
         test: /\.css$/,
         use: [
           {
-            loader: r('style-loader'),
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: r('css-loader'),
+          },
+        ],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
           },
           {
             loader: r('css-loader'),
@@ -41,8 +53,8 @@ const config = {
     publicPath: '/bundle/',
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
   ],
 };
 

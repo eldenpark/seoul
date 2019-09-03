@@ -9,6 +9,10 @@ const StyledPageBase = styled.div({
   flexGrow: 1,
 });
 
+const PageContent = styled.div({
+  padding: '38px 40px',
+});
+
 const PageBase = ({
   children,
   pageTitle,
@@ -32,12 +36,14 @@ const PageBase = ({
       <Top
         handleChangeComponentType={handleChangeComponentType}
       />
-      <PageTitle>
-        {pageTitle}
-      </PageTitle>
-      <div>
-        {children}
-      </div>
+      <PageContent>
+        <PageTitle>
+          {pageTitle}
+        </PageTitle>
+        <div>
+          {children}
+        </div>
+      </PageContent>
     </StyledPageBase>
   );
 };

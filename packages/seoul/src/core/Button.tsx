@@ -1,4 +1,4 @@
-const Button = styled.button<any>`
+const Button = styled.button<ButtonProps>`
   &:hover {
     color: ${(props) => (props.disabled ? 'inherit' : '#d6d6d6')};
   }
@@ -13,3 +13,7 @@ const Button = styled.button<any>`
 `;
 
 export default Button;
+
+export interface ButtonProps {
+  disabled?: boolean;
+}

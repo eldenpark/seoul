@@ -23,7 +23,7 @@ export default function useComponentType<P>(components?: Components) {
 }
 
 interface UseComponentTypeResult<P> {
-  Component: React.ComponentType<P>;
+  Component: React.ElementType<P>;
   componentType: string;
 }
 

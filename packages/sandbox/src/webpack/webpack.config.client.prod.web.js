@@ -26,6 +26,17 @@ const config = {
           },
         ],
       },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: r('css-loader'),
+          },
+        ],
+      },
     ],
   },
   optimization: {

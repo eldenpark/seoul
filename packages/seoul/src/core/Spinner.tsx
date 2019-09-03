@@ -30,7 +30,7 @@ const SpinnerContent = styled.div`
       box-shadow: 0 0;
       height: 3em;
     }
-    40%: {
+    40% {
       box-shadow: 0 -2em;
       height: 4em;
     }
@@ -42,7 +42,7 @@ const StyledSpinner = styled.div<any>`
   display: flex;
   height: ${(props) => (props.height ? props.height : '100%')};
   justify-content: center;
-  min-height: 90;
+  min-height: 90px;
   width: 100%;
 `;
 
@@ -58,6 +58,6 @@ const Spinner: React.FC<SpinnerProps> = ({
 
 export default Spinner;
 
-interface SpinnerProps {
+export interface SpinnerProps {
   height?: number;
 }

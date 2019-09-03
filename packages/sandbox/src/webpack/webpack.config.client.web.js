@@ -1,5 +1,3 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 const babelRc = require('../../scripts/.babelRc');
 
 const r = require.resolve;
@@ -26,17 +24,6 @@ module.exports = {
         ],
       },
       {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: 'css-loader',
-          },
-        ],
-      },
-      {
         test: /\.(woff(2)?|ttf|eot|svg|png|jpg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
@@ -55,7 +42,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin(),
   ],
   resolve: {
     extensions: [

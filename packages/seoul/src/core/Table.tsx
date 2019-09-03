@@ -1,11 +1,11 @@
 import React from 'react';
 
-const StyledCommonTable = styled.div`
+const StyledTable = styled.div`
   overflow-x: scroll;
   width: 100%;
 `;
 
-const Table = styled.table`
+const TableContent = styled.table`
   &>thead {
     color: #0000008a;
     fontSize: 0.75rem;
@@ -58,13 +58,13 @@ const Rows: React.FC<RowsProps> = ({
   );
 };
 
-const CommonTable: React.FC<CommonTableProps> = ({
+const Table: React.FC<TableProps> = ({
   bodyRows,
   headerRows,
 }) => {
   return (
-    <StyledCommonTable>
-      <Table>
+    <StyledTable>
+      <TableContent>
         <Rows
           componentType="thead"
           rows={headerRows}
@@ -73,14 +73,14 @@ const CommonTable: React.FC<CommonTableProps> = ({
           componentType="tbody"
           rows={bodyRows}
         />
-      </Table>
-    </StyledCommonTable>
+      </TableContent>
+    </StyledTable>
   );
 };
 
-export default CommonTable;
+export default Table;
 
-interface CommonTableProps {
+export interface TableProps {
   bodyRows: Row[];
   headerRows: Row[];
 }
