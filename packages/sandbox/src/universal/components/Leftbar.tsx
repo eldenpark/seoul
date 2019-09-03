@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { ComponentDefinition } from '@@universal/components/componentDefinitions';
+import useComponentType from '@@universal/hooks/useComponentType';
 import useRouter from '@@universal/hooks/useRouter';
 
 const log = logger('[sandbox]');
@@ -26,7 +27,7 @@ const Leftbar: React.FC<LeftbarProps> = ({
   componentDefinitions,
 }) => {
   const { history } = useRouter();
-
+  const { componentType } = useComponentType();
   const handleClickButton = React.useCallback((e) => {
     const href = e.target.getAttribute('data-href');
     log('handleClickButton(): dataHref: %s', href);
@@ -34,18 +35,19 @@ const Leftbar: React.FC<LeftbarProps> = ({
   }, []);
 
   const Li = React.useMemo(() => {
+    const _componentType = componentType.length > 0 ? `/${componentType}` : '/linaria';
     const LiComponent: React.FC<LiComponentProps> = ({
       label,
     }) => (
       <li
-        data-href={`/styled/${label.toLowerCase()}`}
+        data-href={`${_componentType}/${label.toLowerCase()}`}
         onClick={handleClickButton}
       >
         {label}
       </li>
     );
     return LiComponent;
-  }, ['hot']);
+  }, [componentType]);
 
   const menus = React.useMemo(() => {
     return componentDefinitions.map(({ components, label }) => {
@@ -60,7 +62,6 @@ const Leftbar: React.FC<LeftbarProps> = ({
 
       return (
         <div key={label}>
-          <p>{label}</p>
           <ul>{lists}</ul>
         </div>
       );

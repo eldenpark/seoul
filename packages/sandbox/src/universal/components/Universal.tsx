@@ -5,14 +5,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import componentDefinitions from './componentDefinitions';
-import {
-  ComponentType,
-  ComponentTypeContext,
-} from '@@universal/context';
 import Page from '@@universal/components/pages/Page';
 import GlobalStyle from '@@universal/components/GlobalStyle';
 import Leftbar from '@@universal/components/Leftbar';
-import Top from '@@universal/components/Top';
 
 const StyledUniversal = styled.div({
   display: 'flex',
@@ -26,24 +21,14 @@ const Right = styled.div({
 });
 
 const Universal: React.FC<{}> = () => {
-  const [componentType, setComponentType] = React.useState(ComponentType.LINARIA);
-  const handleChangeComponentType = React.useCallback((e) => {
-    setComponentType(e.target.value);
-  }, [componentType]);
-
   return (
-    <ComponentTypeContext.Provider value={componentType}>
-      <StyledUniversal>
-        <GlobalStyle />
-        <Leftbar componentDefinitions={componentDefinitions} />
-        <Right>
-          <Top
-            handleChangeComponentType={handleChangeComponentType}
-          />
-          <Page componentDefinitions={componentDefinitions} />
-        </Right>
-      </StyledUniversal>
-    </ComponentTypeContext.Provider>
+    <StyledUniversal>
+      <GlobalStyle />
+      <Leftbar componentDefinitions={componentDefinitions} />
+      <Right>
+        <Page componentDefinitions={componentDefinitions} />
+      </Right>
+    </StyledUniversal>
   );
 };
 

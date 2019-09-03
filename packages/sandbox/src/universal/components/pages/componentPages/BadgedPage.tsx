@@ -1,6 +1,6 @@
 import 'seoul/linaria/Badged.css';
 
-import { ComponentType } from '@@universal/context';
+import { ComponentType } from '@@universal/constants';
 import LnBadged, { BadgedProps } from 'seoul/linaria/Badged';
 import ScBadged from 'seoul/styled/Badged';
 import React from 'react';
@@ -9,7 +9,7 @@ import Variation from '@@universal/components/pages/Variation';
 import useComponentType from '@@universal/hooks/useComponentType';
 
 const BadgedPage = () => {
-  const Component = useComponentType<BadgedProps>({
+  const { Component } = useComponentType<BadgedProps>({
     [ComponentType.LINARIA]: LnBadged,
     [ComponentType.STYLED]: ScBadged,
   });

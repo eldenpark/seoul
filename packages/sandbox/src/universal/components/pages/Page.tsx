@@ -15,13 +15,13 @@ const Page: React.FC<PageProps> = ({
   componentDefinitions,
 }) => {
   const routes = React.useMemo(() => {
-    const routeComponents = componentDefinitions.flatMap(({ components, label }) => {
+    const routeComponents = componentDefinitions.flatMap(({ components }) => {
       return components.map((component) => {
         return (
           <Route
             component={component.component}
             key={component.name}
-            path={`/${label.toLowerCase()}/${component.name}`}
+            path={`/:componentType/${component.name}`}
           />
         );
       });

@@ -48,7 +48,7 @@ const componentDefinitions: ComponentDefinition[] = [
         name: 'spinner',
       },
     ],
-    label: 'Styled',
+    label: 'default',
   },
 ];
 
