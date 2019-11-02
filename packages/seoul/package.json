@@ -1,6 +1,5 @@
 {
   "author": "Elden S. Park",
-  "dependencies": {},
   "devDependencies": {
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
@@ -21,5 +20,5 @@
     "react": ">= 16",
     "react-dom": ">= 16"
   },
-  "version": "0.2.9"
+  "version": "0.3.0"
 }
