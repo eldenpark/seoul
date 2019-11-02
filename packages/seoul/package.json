@@ -1,16 +1,14 @@
 {
   "author": "Elden S. Park",
-  "dependencies": {
-    "jege": "^0.4.0",
-    "linaria": "^1.3.1",
-    "react": "^16.8.6",
-    "react-router-dom": "^5.0.1",
-    "styled-components": "^4.3.2"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.23",
     "@types/react": "^16.8.23",
     "@types/react-router-dom": "^4.3.4",
     "@types/styled-components": "^4.1.18",
+    "jege": "^0.4.0",
+    "merge-stream": "^2.0.0",
     "webpack": "^4.39.3"
   },
   "description": "",
@@ -18,5 +16,10 @@
   "license": "ISC",
   "main": "lib/index.js",
   "name": "seoul",
+  "peerDependencies": {
+    "@emotion/core": ">= 10",
+    "react": ">= 16",
+    "react-dom": ">= 16"
+  },
   "version": "0.2.9"
 }

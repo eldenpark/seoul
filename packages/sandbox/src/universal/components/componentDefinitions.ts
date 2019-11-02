@@ -1,6 +1,5 @@
 import BadgedPage from '@@universal/components/pages/componentPages/BadgedPage';
 import ButtonPage from '@@universal/components/pages/componentPages/ButtonPage';
-import DropdownPage from '@@universal/components/pages/componentPages/DropdownPage';
 import GridPage from '@@universal/components/pages/componentPages/GridPage';
 import ImagePage from '@@universal/components/pages/componentPages/ImagePage';
 import InputPage from '@@universal/components/pages/componentPages/InputPage';
@@ -18,10 +17,6 @@ const componentDefinitions: ComponentDefinition[] = [
       {
         component: ButtonPage,
         name: 'button',
-      },
-      {
-        component: DropdownPage,
-        name: 'dropdown',
       },
       {
         component: GridPage,

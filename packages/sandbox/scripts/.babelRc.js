@@ -39,9 +39,9 @@ const babelRc = {
       },
       useBuiltIns: 'entry',
     }],
+    r('@emotion/babel-preset-css-prop'),
     r('@babel/preset-react'),
     r('@babel/preset-typescript'),
-    // r('linaria/babel'),
   ],
 };
 

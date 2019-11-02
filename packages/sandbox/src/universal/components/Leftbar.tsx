@@ -35,7 +35,7 @@ const Leftbar: React.FC<LeftbarProps> = ({
   }, []);
 
   const Li = React.useMemo(() => {
-    const _componentType = componentType.length > 0 ? `/${componentType}` : '/linaria';
+    const _componentType = componentType.length > 0 ? `/${componentType}` : '/styled';
     const LiComponent: React.FC<LiComponentProps> = ({
       label,
     }) => (

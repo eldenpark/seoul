@@ -1,19 +1,22 @@
 /* eslint-disable import/no-extraneous-dependencies */
+require('core-js/fn/array/flat-map');
+
 // const babel = require('gulp-babel');
+const { buildLogger } = require('jege/server');
 const del = require('del');
 const fs = require('fs');
 const gulp = require('gulp');
-const { buildLogger } = require('jege/server');
+const mergeStream = require('merge-stream');
 const path = require('path');
 const ts = require('gulp-typescript');
 
 // const babelRc = require('./.babelRc');
-const webpack = require('./webpack');
 const tsConfig = require('../tsconfig.json');
 
 const buildLog = buildLogger('[seoul]');
 const paths = {
   build: path.resolve(__dirname, '../build'),
+  core: path.resolve(__dirname, '../src/core'),
   lib: path.resolve(__dirname, '../lib'),
   root: path.resolve(__dirname, '../'),
   src: path.resolve(__dirname, '../src'),
@@ -23,7 +26,7 @@ gulp.task('clean', () => {
   const targetPath = [
     `${paths.build}`,
     `${paths.lib}/**/*`,
-    `${paths.root}/{core,linaria,styled}/**/*`,
+    `${paths.root}/{core,styled}/**/*`,
   ];
 
   buildLog('clean', 'targetPath: %s', targetPath);
@@ -31,33 +34,50 @@ gulp.task('clean', () => {
   return del(targetPath);
 });
 
+gulp.task('copy', () => {
+  const srcPath = [
+    `${paths.core}/**/*`,
+  ];
+
+  const copyPaths = {
+    emotion: path.resolve(paths.build, 'emotion'),
+    styled: path.resolve(paths.build, 'styled'),
+  };
+
+  buildLog('copy', 'srcPath: %s styledPath: %s', srcPath, copyPaths.styled);
+  return mergeStream(
+    gulp.src(srcPath)
+      .pipe(gulp.dest(copyPaths.styled)),
+    gulp.src(srcPath)
+      .pipe(gulp.dest(copyPaths.emotion)),
+  );
+});
+
 gulp.task('interpolate', (done) => {
-  if (fs.existsSync(paths.build)) {
-    buildLog('interpolate', 'buildPath already exists. Make sure you remove this before building');
+  if (!fs.existsSync(paths.build)) {
+    buildLog('interpolate', 'buildPath does not exist');
     throw new Error('build is not removed');
   }
 
-  fs.mkdirSync(paths.build);
-  fs.mkdirSync(path.resolve(paths.build, 'styled'));
-  fs.mkdirSync(path.resolve(paths.build, 'linaria'));
+  const stringToInterpolate = {
+    emotion: `import styled from '@emotion/styled';`,
+    styled: `import styled from 'styled-components';\n`,
+  };
 
-  const corePath = path.resolve(paths.src, 'core');
-  const files = fs.readdirSync(corePath);
-  files.forEach((file) => {
-    if (file.endsWith('.tsx')) {
-      const filePath = path.resolve(corePath, file);
-      const styledFilePath = path.resolve(paths.build, 'styled', file);
-      const linariaFilePath = path.resolve(paths.build, 'linaria', file);
+  Object.keys(stringToInterpolate)
+    .forEach((type) => {
+      const buildPath = path.resolve(paths.build, type);
+      buildLog('interpoate', 'will walk() at root: %s', buildPath);
 
-      const stat = fs.readFileSync(filePath);
+      const pathList = walk(buildPath);
+      buildLog('interploate', 'pathList: %j', pathList);
 
-      fs.writeFileSync(styledFilePath, `import styled from 'styled-components';\n`);
-      fs.appendFileSync(styledFilePath, stat.toString());
-
-      fs.writeFileSync(linariaFilePath, `import { styled } from 'linaria/react';\n`);
-      fs.appendFileSync(linariaFilePath, stat.toString());
-    }
-  });
+      pathList.forEach((filePath) => {
+        const stat = fs.readFileSync(filePath);
+        fs.writeFileSync(filePath, stringToInterpolate[type]);
+        fs.appendFileSync(filePath, stat.toString());
+      });
+    });
   done();
 });
 
@@ -81,29 +101,26 @@ gulp.task('tsc', () => {
     .pipe(gulp.dest(destPath));
 });
 
-gulp.task('webpack', () => {
-  buildLog('webpack');
-  webpack();
-});
-
-// gulp.task('babel', () => {
-//   const destPath = path.resolve(paths.root, 'astroturf');
-//   buildLog('babel', 'babelRc: %j, src: %s, destPath: %s', babelRc, destPath);
-
-//   return gulp.src([`${paths.build}/astroturf/**/*.{ts,tsx}`])
-//     .pipe(babel(babelRc)
-//       .on('error', (err) => {
-//         buildLog('babel', 'error: %o', err);
-//       }))
-//     .pipe(gulp.dest(destPath));
-// });
-
-gulp.task('build', gulp.series('clean', 'interpolate', 'tsc', 'webpack'));
-// gulp.task('build', gulp.series('clean', 'babel'));
+gulp.task('build', gulp.series('clean', 'copy', 'interpolate', 'tsc'));
 
 function build(callback) {
   const buildTask = gulp.task('build');
   buildTask(callback);
+}
+
+function walk(currPath) {
+  const stat = fs.lstatSync(currPath);
+  let list = [];
+
+  if (stat.isDirectory()) {
+    const subPaths = fs.readdirSync(currPath);
+    subPaths.forEach((subPath) => {
+      list = list.concat(walk(path.resolve(currPath, subPath)));
+    });
+  } else if (currPath.endsWith('.tsx') || currPath.endsWith('.ts')) {
+    list.push(currPath);
+  }
+  return list;
 }
 
 module.exports = build;

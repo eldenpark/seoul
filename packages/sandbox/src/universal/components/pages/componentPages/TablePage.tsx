@@ -1,8 +1,6 @@
-import 'seoul/linaria/Table.css';
-
-import LnTable, { TableProps } from 'seoul/linaria/Table';
+import EmTable from 'seoul/emotion/Table';
 import React from 'react';
-import ScTable from 'seoul/styled/Table';
+import ScTable, { TableProps } from 'seoul/styled/Table';
 
 import { ComponentType } from '@@universal/constants';
 import PageBase from '@@universal/components/pages/PageBase';
@@ -47,7 +45,7 @@ const bodyRows = [
 
 const TablePage: React.FC<{}> = () => {
   const { Component } = useComponentType<TableProps>({
-    [ComponentType.LINARIA]: LnTable,
+    [ComponentType.EMOTION]: EmTable,
     [ComponentType.STYLED]: ScTable,
   });
 

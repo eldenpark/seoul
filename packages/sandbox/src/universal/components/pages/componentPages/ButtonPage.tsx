@@ -1,8 +1,6 @@
-import 'seoul/linaria/Button.css';
-
-import LnButton, { ButtonProps } from 'seoul/linaria/Button';
+import EmButton from 'seoul/emotion/Button';
 import React from 'react';
-import ScButton from 'seoul/styled/Button';
+import ScButton, { ButtonProps } from 'seoul/styled/Button';
 
 import { alert } from '@@universal/utils';
 import { ComponentType } from '@@universal/constants';
@@ -12,7 +10,7 @@ import useComponentType from '@@universal/hooks/useComponentType';
 
 const TextPage: React.FC<{}> = () => {
   const { Component } = useComponentType<ButtonProps>({
-    [ComponentType.LINARIA]: LnButton,
+    [ComponentType.EMOTION]: EmButton,
     [ComponentType.STYLED]: ScButton,
   });
 

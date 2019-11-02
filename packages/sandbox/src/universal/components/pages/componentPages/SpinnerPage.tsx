@@ -1,8 +1,6 @@
-import 'seoul/linaria/Spinner.css';
-
-import LnSpinner, { SpinnerProps } from 'seoul/linaria/Spinner';
+import EmSpinner from 'seoul/emotion/Spinner';
 import React from 'react';
-import ScSpinner from 'seoul/styled/Spinner';
+import ScSpinner, { SpinnerProps } from 'seoul/styled/Spinner';
 
 import { ComponentType } from '@@universal/constants';
 import PageBase from '@@universal/components/pages/PageBase';
@@ -11,7 +9,7 @@ import useComponentType from '@@universal/hooks/useComponentType';
 
 const SpinnerPage: React.FC<{}> = () => {
   const { Component } = useComponentType<SpinnerProps>({
-    [ComponentType.LINARIA]: LnSpinner,
+    [ComponentType.EMOTION]: EmSpinner,
     [ComponentType.STYLED]: ScSpinner,
   });
 

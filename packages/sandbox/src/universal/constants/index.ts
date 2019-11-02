@@ -1,4 +1,4 @@
 export enum ComponentType {
-  LINARIA = 'linaria',
+  EMOTION = 'emotion',
   STYLED = 'styled',
 }

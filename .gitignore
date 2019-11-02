@@ -168,11 +168,9 @@ dist/
 
 # ...
 __temp/
-.linaria-cache
 
 # ...
 package-lock.json
 packages/*/build
 packages/*/lib
-packages/*/linaria
 packages/*/styled

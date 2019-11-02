@@ -1,16 +1,15 @@
-import 'seoul/linaria/Badged.css';
+import EmBadged from 'seoul/emotion/Badged';
+import React from 'react';
+import ScBadged, { BadgedProps } from 'seoul/styled/Badged';
 
 import { ComponentType } from '@@universal/constants';
-import LnBadged, { BadgedProps } from 'seoul/linaria/Badged';
-import ScBadged from 'seoul/styled/Badged';
-import React from 'react';
 import PageBase from '@@universal/components/pages/PageBase';
 import Variation from '@@universal/components/pages/Variation';
 import useComponentType from '@@universal/hooks/useComponentType';
 
 const BadgedPage = () => {
   const { Component } = useComponentType<BadgedProps>({
-    [ComponentType.LINARIA]: LnBadged,
+    [ComponentType.EMOTION]: EmBadged,
     [ComponentType.STYLED]: ScBadged,
   });
 

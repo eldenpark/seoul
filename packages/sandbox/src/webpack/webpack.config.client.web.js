@@ -14,13 +14,6 @@ module.exports = {
             loader: r('babel-loader'),
             options: babelRc,
           },
-          // {
-          //   loader: r('linaria/loader'),
-          //   options: {
-          //     babelOptions: babelRc,
-          //     sourceMap: true,
-          //   },
-          // },
         ],
       },
       {

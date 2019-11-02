@@ -39,9 +39,9 @@ const Top = ({
   return (
     <StyledTop>
       <MemoizedButton
-        active={componentType === ComponentType.LINARIA}
-        label="Linaria"
-        value={ComponentType.LINARIA}
+        active={componentType === ComponentType.EMOTION}
+        label="Emotion"
+        value={ComponentType.EMOTION}
       />
       <MemoizedButton
         active={componentType === ComponentType.STYLED}

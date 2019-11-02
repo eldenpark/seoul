@@ -1,8 +1,6 @@
-import 'seoul/linaria/Input.css';
-
-import LnInput, { InputProps } from 'seoul/linaria/Input';
+import EmInput from 'seoul/emotion/Input';
 import React from 'react';
-import ScInput from 'seoul/styled/Input';
+import ScInput, { InputProps } from 'seoul/styled/Input';
 import styled from 'styled-components';
 
 import { ComponentType } from '@@universal/constants';
@@ -18,7 +16,7 @@ const Row = styled.div({
 
 const InputPage: React.FC<{}> = () => {
   const { Component } = useComponentType<InputProps>({
-    [ComponentType.LINARIA]: LnInput,
+    [ComponentType.EMOTION]: EmInput,
     [ComponentType.STYLED]: ScInput,
   });
 

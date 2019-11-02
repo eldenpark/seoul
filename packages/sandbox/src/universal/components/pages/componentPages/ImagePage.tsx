@@ -1,8 +1,6 @@
-import 'seoul/linaria/Image.css';
-
-import LnImage, { ImageProps } from 'seoul/linaria/Image';
-import ScImage from 'seoul/styled/Image';
+import EmImage from 'seoul/emotion/Image';
 import React from 'react';
+import ScImage, { ImageProps } from 'seoul/styled/Image';
 
 import { ComponentType } from '@@universal/constants';
 import PageBase from '@@universal/components/pages/PageBase';
@@ -11,7 +9,7 @@ import useComponentType from '@@universal/hooks/useComponentType';
 
 const ImagePage: React.FC<{}> = () => {
   const { Component } = useComponentType<ImageProps>({
-    [ComponentType.LINARIA]: LnImage,
+    [ComponentType.EMOTION]: EmImage,
     [ComponentType.STYLED]: ScImage,
   });
 

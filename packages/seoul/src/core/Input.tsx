@@ -1,16 +1,16 @@
 import React from 'react';
 
 const StyledInput = styled.div<any>`
-  &.focus>div:after: {
+  &.focus>div:after {
     transform: scaleX(1);
   }
-  &.focus>div:before: {
+  &.focus>div:before {
     border-bottom: '2px solid #000000de',
   }
-  &.focus>label: {
+  &.focus>label {
     color: '#80491f',
   }
-  &:not(.focus)>div:hover:before: {
+  &:not(.focus)>div:hover:before {
     border-bottom: '2px solid #000000de',
   }
   display: inline-block;

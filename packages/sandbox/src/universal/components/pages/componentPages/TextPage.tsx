@@ -1,8 +1,6 @@
-import 'seoul/linaria/Text.css';
-
-import LnText, { TextProps } from 'seoul/linaria/Text';
+import EmText from 'seoul/emotion/Text';
 import React from 'react';
-import ScText from 'seoul/styled/Text';
+import ScText, { TextProps } from 'seoul/styled/Text';
 
 import { ComponentType } from '@@universal/constants';
 import PageBase from '@@universal/components/pages/PageBase';
@@ -14,7 +12,7 @@ const text = '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e
 
 const TextPage: React.FC<{}> = () => {
   const { Component } = useComponentType<TextProps>({
-    [ComponentType.LINARIA]: LnText,
+    [ComponentType.EMOTION]: EmText,
     [ComponentType.STYLED]: ScText,
   });
 
